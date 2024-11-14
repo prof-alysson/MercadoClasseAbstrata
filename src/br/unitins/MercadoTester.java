@@ -6,7 +6,12 @@ import java.time.LocalDate;
 public class MercadoTester {
 
     public static void main (String[] args){
-        Carrinho carrinhoCompra = new Carrinho();
+        Comprador comprador1 = new Comprador("Mateus", LocalDate.of(2004,11,26));
+        Carrinho carrinhoCompra = new Carrinho(comprador1);
+
+        Bebida cerveja = new Bebida(LocalDate.of(2025,02,28));
+        cerveja.setNome("Skoll");
+        cerveja.setPreco(15.0);
 
         Alimento arroz = new Alimento(LocalDate.of(2024,12,31));
         arroz.setNome("Arroz");
@@ -40,7 +45,12 @@ public class MercadoTester {
         else {
             System.out.printf("Não vendeu o %s\n", livro.getNome());
         }
+
+        if(carrinhoCompra.addItem(cerveja, 3)){
+            System.out.printf("Vendeu %s, sobrou %d\n", cerveja.getNome(), livro.getQuantidadeDisponivel());
+        }
+        else {
+            System.out.printf("Não vendeu o %s\n", cerveja.getNome());
+        }
     }
-
-
 }
